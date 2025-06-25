@@ -4,8 +4,31 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-clap = { version = "4.5.6", features = ["derive"] }
-tokio = { version = "1.37.0", features = ["full"] }
-futures = { version = "0.3.31" }
-libp2p = { version = "0.52.0", features = ["tokio", "noise", "macros", "ping", "tcp", "identify", "yamux", "relay", "quic"] }
-tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }
+ratatui = { version = "0.29.0", features = ["all-widgets", "palette"] }
+libp2p = { version = "0.55.0", features = [ "dns", "dcutr", "identify", "macros", "noise", "ping", "quic", "relay", "rendezvous", "tcp", "tokio", "yamux", "gossipsub", "websocket" , "request-response" , "kad", "serde"] }
+crossterm = "0.29.0"
+tokio = { version = "1.38", features = ["macros", "net", "rt", "signal", "io-std", "rt-multi-thread"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+futures = "0.3"
+futures-timer = "3.0"
+clap = { version = "4.5.6", features = ["derive", "env"] }
+async-trait = "0.1"
+libsqlite3-sys = "0.30.1"
+anyhow = "1.0.95"
+
+sled = "0.34"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0" 
+
+[dependencies.sqlx]
+version = "0.8.3"
+default-features = false
+
+[[bin]]
+name = "dht"
+path = "src/dht_db.rs"
+
+[[bin]]
+name = "main"
+path = "src/main.rs"
